@@ -2,15 +2,20 @@ package code_zonder_codesmells;
 
 import java.util.Scanner;
 
-public class StemMachineImpl extends StemMachine {
+public class StemMachineImpl extends StemMachine 
+{
     protected Kiezer kiezer;
 
-    protected void registreerStem() {
+    @Override
+    protected void registreerStem() 
+    {
         stemmen++;
         System.out.println("Stem is geregistreerd voor kiezer: " + kiezer.getNaam());
     }
 
-    protected void verifieerStemgerechtigheid() {
+    @Override
+    protected void verifieerStemgerechtigheid() 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Voer uw naam in om uw stemgerechtigdheid te verifiëren: ");
         String kiezerNaam = scanner.nextLine();

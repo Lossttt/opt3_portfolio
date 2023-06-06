@@ -1,6 +1,7 @@
 package code_zonder_codesmells;
 
-public abstract class StemMachine {
+public abstract class StemMachine 
+{
     protected int stemmen;
 
     public void stemUitbrengen() {
@@ -8,13 +9,15 @@ public abstract class StemMachine {
         registreerStem();
     }
 
-    protected void verifieerStemgerechtigheid() {
+    protected void verifieerStemgerechtigheid() 
+    {
         System.out.println("Verifieer stemgerechtigdheid van de kiezer...");
     }
 
     protected abstract void registreerStem();
 
-    public int getAantalStemmen() {
+    public int getAantalStemmen() 
+    {
         return stemmen;
     }
 }

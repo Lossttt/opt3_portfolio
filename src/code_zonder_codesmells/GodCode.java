@@ -3,8 +3,10 @@ package code_zonder_codesmells;
 import java.util.*;
 
 
-public class GodCode {
-    public static void main(String[] args) {
+public class GodCode 
+{
+    public static void main(String[] args) 
+    {
         VerkiezingSysteemFactory factory = new VerkiezingSysteemFactoryImpl();
         VerkiezingSysteem verkiezingssysteem = factory.createVerkiezingSysteem();
         StemMachine stemmachine = factory.createStemMachine();
