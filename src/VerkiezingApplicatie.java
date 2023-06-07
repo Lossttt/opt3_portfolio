@@ -109,7 +109,7 @@ class StemProcessor {
 
     public void initialiseerStemmen() {
         System.out.println("Het verkiezingssysteem wordt geïnitialiseerd...");
-        stemResultaten.initialiseerStemmen(kandidaten.getKandidatenLijst());
+        stemResultaten.initialiseerStemResultaten(kandidaten.getKandidatenLijst());
     }
 
     public void registreerStem(String kandidaat, Kiezer kiezer) {
@@ -154,7 +154,7 @@ class StemRegistratie {
 class StemResultaten {
     private Map<String, Integer> stemmenPerKandidaat;
 
-    public void initialiseerStemmen(List<String> kandidatenLijst) {
+    public void initialiseerStemResultaten(List<String> kandidatenLijst) {
         stemmenPerKandidaat = new HashMap<>();
         for (String kandidaat : kandidatenLijst) {
             stemmenPerKandidaat.put(kandidaat, 0);
