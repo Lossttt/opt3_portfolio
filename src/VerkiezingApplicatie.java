@@ -1,4 +1,5 @@
 import java.util.*;
+package src.abstracttemplate.without;
 
 interface VerkiezingSysteem 
 {
@@ -40,25 +41,37 @@ class StemInputHandler
         {
             return false; // Stoppen met de verkiezing
         } else {
-            int keuzeIndex;
-            try {
-                keuzeIndex = Integer.parseInt(input) - 1;
-            } catch (NumberFormatException e) {
-                System.out.println("Ongeldige invoer. Stem niet geregistreerd.");
-                return true; // Doorgaan met de verkiezing
-            }
-
-            List<String> kandidatenLijst = kandidaten.getKandidatenLijst();
-            if (keuzeIndex >= 0 && keuzeIndex < kandidatenLijst.size()) 
-            {
-                String gekozenKandidaat = kandidatenLijst.get(keuzeIndex);
-                Kiezer kiezer = stemmachine.getKiezer();
-                stemProcessor.registreerStem(gekozenKandidaat, kiezer);
-            } else {
-                System.out.println("Ongeldige kandidaat. Stem niet geregistreerd.");
+            int keuzeIndex = parseInput(input);
+            if (keuzeIndex != -1) {
+                registerVote(keuzeIndex, stemmachine);
             }
             return true; // Doorgaan met de verkiezing
         }
+    }
+
+    private int parseInput(String input) 
+    {
+        try 
+        {
+            int keuzeIndex = Integer.parseInt(input) - 1;
+            List<String> kandidatenLijst = kandidaten.getKandidatenLijst();
+            if (keuzeIndex >= 0 && keuzeIndex < kandidatenLijst.size())
+            {
+                return keuzeIndex;
+            } else {
+                System.out.println("Ongeldige kandidaat. Stem niet geregistreerd.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Ongeldige invoer. Stem niet geregistreerd.");
+        }
+        return -1;
+    }
+    
+    private void registerVote(int keuzeIndex, AbstractStemMachine stemmachine) 
+    {
+        String gekozenKandidaat = kandidaten.getKandidatenLijst().get(keuzeIndex);
+        Kiezer kiezer = stemmachine.getKiezer();
+        stemProcessor.registreerStem(gekozenKandidaat, kiezer);
     }
 }
 
